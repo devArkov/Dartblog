@@ -13,9 +13,7 @@ $(document).ready(function () {
     $('.filters-button-group').on('click', 'button', function () {
         var filterValue = $(this).attr('data-filter');
         filterValue = filterFns[filterValue] || filterValue;
-        $grid.isotope({
-            filter: filterValue
-        });
+
     });
     $('.button-group').each(function (i, buttonGroup) {
         var $buttonGroup = $(buttonGroup);
