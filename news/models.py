@@ -9,6 +9,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.title
@@ -20,6 +22,8 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tags'
 
     def __str__(self):
         return self.title
@@ -33,11 +37,13 @@ class Post(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%M/%d', blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
-    author = models.OneToOneField(User, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100)
     views = models.IntegerField(default=0, verbose_name='Views count')
 
     class Meta:
         ordering = ['-created_at']
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
 
     def __str__(self):
         return self.title
