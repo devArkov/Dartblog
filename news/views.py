@@ -25,7 +25,7 @@ class CategoryNewsView(ListView):
     allow_empty = False
 
     def get_queryset(self):
-        return  Post.objects.filter(category__slug=self.kwargs['slug'])
+        return Post.objects.filter(category__slug=self.kwargs['slug'])
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,7 +34,18 @@ class CategoryNewsView(ListView):
 
 
 class TagNewsView(ListView):
-    pass
+    template_name = 'news/tag_news_list.html'
+    context_object_name = 'news'
+    paginate_by = 2
+    allow_empty = False
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs['slug'])
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = str(Tag.objects.get(slug=self.kwargs['slug']))
+        return context
 
 
 class NewsDetailView(DetailView):
