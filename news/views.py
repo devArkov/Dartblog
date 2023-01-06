@@ -1,7 +1,25 @@
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from .models import Post, Category, Tag
 
 
 # Create your views here.
-def home(request: HttpRequest) -> HttpResponse:
-    return render(request, 'news/index.html')
+class NewsListView(ListView):
+    model = Post
+    template_name = 'news/news_list.html'
+    context_object_name = 'news'
+    paginate_by = 2
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'News'
+        return context
+
+
+def category(request, slug):
+    return render(request, 'category.html')
+
+
+def post(request):
+    pass
