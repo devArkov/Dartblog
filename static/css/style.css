@@ -238,18 +238,18 @@ section.blog-post-area h4 span.author-name {
     margin: 25px 0 15px;
 }
 
-.blog-post-area .pegination {
+.blog-post-area .pagination {
     margin-top: 60px;
     margin-bottom: 60px;
 }
 
-.blog-post-area .pegination .nav-links {
+.blog-post-area .pagination .nav-links {
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-.blog-post-area .pegination .nav-links .page-numbers {
+.blog-post-area .pagination .nav-links .page-numbers {
     border: 1px solid #448aff;
     border-radius: 50%;
     color: #448aff;
@@ -269,17 +269,17 @@ section.blog-post-area h4 span.author-name {
     margin: 0 20px 0 40px;
 }
 
-.blog-post-area .pegination .nav-links .page-numbers.current {
+.blog-post-area .pagination .nav-links .page-numbers.current {
     background: #448aff;
     color: #fff;
 }
 
-.blog-post-area .pegination .nav-links .page-numbers:hover {
+.blog-post-area .pagination .nav-links .page-numbers:hover {
     background: #448aff;
     color: #fff;
 }
 
-.blog-post-area .pegination .nav-links a {
+.blog-post-area .pagination .nav-links a {
     text-decoration: none;
 }
 
@@ -749,4 +749,12 @@ section.blog-post-area h4 span.author-name {
     font-family: Geometria;
     font-size: 15px;
     font-weight: 500;
+}
+
+/* Custom styles */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }

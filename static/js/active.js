@@ -1,5 +1,15 @@
 $(document).ready(function () {
 
+    $('.menu a').each(function() {
+        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+
+        let link = this.href;
+
+        if (location === link) {
+            $(this).parent().addClass('active');
+        }
+    });
+
     var filterFns = {
         numberGreaterThan50: function () {
             var number = $(this).find('.number').text();
@@ -13,6 +23,7 @@ $(document).ready(function () {
     $('.filters-button-group').on('click', 'button', function () {
         var filterValue = $(this).attr('data-filter');
         filterValue = filterFns[filterValue] || filterValue;
+
     });
     $('.button-group').each(function (i, buttonGroup) {
         var $buttonGroup = $(buttonGroup);
@@ -22,3 +33,5 @@ $(document).ready(function () {
         });
     });
 });
+
+

@@ -1,6 +1,6 @@
 {% load cache %}
 
-    {% cache 20 header %}
+    {% cache 360 header %}
         {% include 'inc/_header.html' %}
     {% endcache %}
 
@@ -8,6 +8,6 @@
 
     {% endblock content %}
 
-    {% cache 20 footer %}
+    {% cache 360 footer %}
         {% include 'inc/_footer.html' %}
     {% endcache footer %}
