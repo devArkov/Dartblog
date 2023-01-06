@@ -18,7 +18,7 @@ class NewsListView(ListView):
 
 
 def category(request, slug):
-    return render(request, 'category.html')
+    return render(request, 'news/category.html')
 
 
 def post(request):

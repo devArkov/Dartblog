@@ -1,7 +1,13 @@
-        {% include 'inc/header.html' %}
+{% load cache %}
 
-        {% block content %}
+    {% cache 20 header %}
+        {% include 'inc/_header.html' %}
+    {% endcache %}
 
-        {% endblock content %}
+    {% block content %}
 
-        {% include 'inc/footer.html' %}
+    {% endblock content %}
+
+    {% cache 20 footer %}
+        {% include 'inc/_footer.html' %}
+    {% endcache footer %}
