@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, Category, Tag
 from django.db.models import F
 from .forms import NewsForm
@@ -74,4 +74,11 @@ class NewsEditView(UpdateView):
     model = Post
     form_class = NewsForm
     template_name = 'news/edit.html'
+    success_url = reverse_lazy('news')
+
+
+class NewsDeleteView(DeleteView):
+    model = Post
+    context_object_name = 'post'
+    template_name = 'news/post_confirm_delete.html'
     success_url = reverse_lazy('news')

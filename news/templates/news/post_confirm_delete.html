@@ -1,0 +1,52 @@
+{% extends 'detail_base.html' %}
+
+{% block title %} Add news {% endblock title %}
+
+{% load static %}
+
+{% block content %}
+
+    <section class="blog-post-area">
+            <div class="container">
+                <div class="row">
+                    <div class="blog-post-area-style">
+                            <div class="col-md-12">
+                                <div class="single-post-big">
+                                    <div class="big-image">
+                                            <form method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+
+                                                <h1>Are you're sure you want to delete "{{ post.title }}"?</h1>
+
+<!--                                                {{ form.as_p }}-->
+
+                                                <button type="submit" class="btn btn-danger btn-block mb-3">delete post</button>
+                                                <a href="{% url 'news' %}" class="btn btn-success btn-block mb-3">Cansel</a>
+                                            </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for item in news %}
+                                <div class="col-md-3">
+                                <div class="single-post">
+                                    {% if item.photo %}
+                                        <img src="{{ item.photo.url }}" alt="{{ item.title }}">
+                                    {% endif %}
+                                    <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                    <h4><span>Posted By: <span class="author-name">{{ item.author }}</span></span>
+                                    </h4>
+                                    <p>{{ item.content|truncatewords_html:10|safe }}</p>
+                                    <h4><span>{{ item.created_at|date:'j E Y' }}</span></h4>
+                                </div>
+                            </div>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            {% if is_paginated %}
+                {% include 'inc/_pagination.html' %}
+            {% endif %}
+        </section>
+
+{% endblock content %}
