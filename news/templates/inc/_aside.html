@@ -1,0 +1,49 @@
+{% load static %}
+{% load aside %}
+
+<div class="col-md-4">
+    <div class="grid">
+        {% show_popular_news 3 %}
+
+        {% show_recent_news 3 %}
+    </div>
+    <div class="sidebar-ads">
+        <img src="{% static 'img/sidebar-ads.jpg' %}" alt="">
+        <p>Place For Your <br> Ad Banner</p>
+    </div>
+    <div class="tags">
+        <h2 class="sidebar-title">Tags</h2>
+        <p><a href="#">Adventure</a></p>
+        <p><a href="#">Animals</a></p>
+        <p><a href="#">Asia</a></p>
+        <p><a href="#">Beauty</a></p>
+        <p><a href="#">Canada</a></p>
+        <p><a href="#">Celebration</a></p>
+        <p><a href="#">City</a></p>
+        <p><a href="#">Coffee</a></p>
+        <p><a href="#">Constructions</a></p>
+        <p><a href="#">Europe</a></p>
+        <p><a href="#">Adventure</a></p>
+        <p><a href="#">Animals</a></p>
+        <p><a href="#">Asia</a></p>
+        <p><a href="#">Beauty</a></p>
+        <p><a href="#">Canada</a></p>
+        <p><a href="#">Celebration</a></p>
+        <p><a href="#">City</a></p>
+        <p><a href="#">Coffee</a></p>
+        <p><a href="#">Constructions</a></p>
+        <p><a href="#">Europe</a></p>
+        <p><a href="#">Adventure</a></p>
+        <p><a href="#">Animals</a></p>
+        <p><a href="#">Asia</a></p>
+        <p><a href="#">Beauty</a></p>
+        <p><a href="#">Canada</a></p>
+    </div>
+    <div class="newsletter">
+        <h2 class="sidebar-title">Subscribe to our Newsletter</h2>
+        <form action="#" method="post">
+            <input type="email" name="" id="" placeholder="Email">
+            <input type="submit" value="Subscribe">
+        </form>
+    </div>
+</div>

@@ -40,7 +40,7 @@ class Post(models.Model):
     slug = models.SlugField()
     content = models.TextField(blank=True, verbose_name='Published')
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='photos/%Y/%M/%d', blank=True)
+    photo = models.ImageField(upload_to='photos/%Y/%M/%d', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
     author = models.CharField(max_length=100)

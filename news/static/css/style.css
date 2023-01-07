@@ -1,33 +1,3 @@
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/Geometria_font/Geometria.ttf');
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: Geometria;
-    src: url('../Geometria_font/Geometria-Bold.ttf');
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/Geometria_font/Geometria-ExtraBold.ttf');
-    font-weight: 800;
-}
-
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/Geometria_font/geometria-light.ttf');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/Geometria_font/geometria-medium.ttf');
-    font-weight: 500;
-}
-
 .wrapper header.header .logo {}
 
 .wrapper header.header .logo h2 {
@@ -758,3 +728,12 @@ section.blog-post-area h4 span.author-name {
     justify-content: center;
     text-align: center;
 }
+
+.footer {
+    margin-top: 30px;
+}
+
+.errorlist {
+    color: red;
+}
+

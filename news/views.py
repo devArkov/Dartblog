@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 from .models import Post, Category, Tag
 from django.db.models import F
+from .forms import NewsForm
 
 
 # Create your views here.
@@ -59,3 +62,13 @@ class NewsDetailView(DetailView):
         self.object.save()
         self.object.refresh_from_db()
         return context
+
+
+class NewsAddView(CreateView):
+    form_class = NewsForm
+    template_name = 'news/add.html'
+    success_url = reverse_lazy('news')
+
+    def get_object(self, queryset=None):
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(Project, slug=slug)
