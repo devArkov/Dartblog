@@ -15,6 +15,7 @@
                         <div class="blog-area">
                             <div class="blog-area-part">
                                 <h2>{{ post.title }}</h2>
+                                <a href="{% url 'edit' post.slug %}" class="btn btn-warning"><i class="fa fa-pencil"> </i> Edit post</a>
                                 <p>
                                     <strong>Category: </strong> <a href="{{ post.category.get_absolute_url }}">{{ post.category.title }}</a>
                                 </p>

@@ -13,14 +13,14 @@
                             <div class="col-md-12">
                                 <div class="single-post-big">
                                     <div class="big-image">
-                                            <h1>Add new post</h1>
+                                            <h1>Edit post "{{ post.title }}"</h1>
 
                                             <form method="POST" enctype="multipart/form-data">
                                                 {% csrf_token %}
 
                                                 {{ form.as_p }}
 
-                                                <button type="submit" class="btn btn-primary btn-block mb-3">Add new post</button>
+                                                <button type="submit" class="btn btn-primary btn-block mb-3">Update post</button>
                                             </form>
                                     </div>
                                 </div>
