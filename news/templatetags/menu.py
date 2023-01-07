@@ -5,7 +5,7 @@ from news.models import Category
 register = template.Library()
 
 
-@register.inclusion_tag('news/menu_tpl.html')
+@register.inclusion_tag('tags/menu_tpl.html')
 def show_menu(menu_class='menu'):
     categories = Category.objects.all()
     return {
