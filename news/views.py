@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, Category, Tag
 from django.db.models import F
 from .forms import NewsForm
+from .filters import MewsFilter
 
 
 # Create your views here.
@@ -82,3 +83,15 @@ class NewsDeleteView(DeleteView):
     context_object_name = 'post'
     template_name = 'news/post_confirm_delete.html'
     success_url = reverse_lazy('news')
+
+
+class NewsSearchView(ListView):
+    model = Post
+    template_name = 'news/news_search.html'
+    ordering = ['-created_at']
+    paginate_by = 4
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = MewsFilter(self.request.GET, queryset=self.get_queryset())
+        return context

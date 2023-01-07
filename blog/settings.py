@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     # Blog apps
     'news',
     'debug_toolbar',
-    'django_ckeditor_5',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
