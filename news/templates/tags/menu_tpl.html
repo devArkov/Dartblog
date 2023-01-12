@@ -1,9 +1,17 @@
 <div class="{{ menu_class }}">
     <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'search' %}">Hi, {{ request.user.username }}</a></li>
+        {% endif %}
         <li><a href="{% url 'search' %}">Search</a></li>
         <li><a href="{% url 'add' %}">Add post</a></li>
         {% for category in categories %}
             <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
         {% endfor %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="/accounts/login">Login</a></li>
+        {% endif %}
     </ul>
 </div>

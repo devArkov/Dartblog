@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+        <section class="blog-post-area">
+            <div class="container">
+                <div class="row">
+                    <div class="blog-post-area-style">
+                        <div class="col-md-12">
+                            <div class="big-image">
+                                <h3>Register</h3>
+
+                                <form method="post">
+                                    {% csrf_token %}
+
+                                    {{ form.as_p }}
+
+                                    <button type="submit" class="btn btn-primary btn-block mt-3">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock content %}

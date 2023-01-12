@@ -16,7 +16,7 @@
                                             <form method="POST" enctype="multipart/form-data">
                                                 {% csrf_token %}
 
-                                                <h1>Are you're sure you want to delete "{{ post.title }}"?</h1>
+                                                <h1>Are you sure you want to delete "{{ post.title }}"?</h1>
 
                                                 <button type="submit" class="btn btn-danger btn-block mb-3">delete post</button>
                                                 <a href="{% url 'news' %}" class="btn btn-success btn-block mb-3">Cansel</a>

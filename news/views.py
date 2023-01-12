@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -7,6 +7,7 @@ from .models import Post, Category, Tag
 from django.db.models import F
 from .forms import NewsForm
 from .filters import MewsFilter
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -65,20 +66,20 @@ class NewsDetailView(DetailView):
         return context
 
 
-class NewsAddView(CreateView):
+class NewsAddView(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/add.html'
     success_url = reverse_lazy('news')
 
 
-class NewsEditView(UpdateView):
+class NewsEditView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = NewsForm
     template_name = 'news/edit.html'
     success_url = reverse_lazy('news')
 
 
-class NewsDeleteView(DeleteView):
+class NewsDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     context_object_name = 'post'
     template_name = 'news/post_confirm_delete.html'
