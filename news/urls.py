@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.NewsListView.as_view(), name='news'),
+    path('author', views.become_author, name='become_author'),
     # Single news operations
     path('post/<str:slug>/', views.NewsDetailView.as_view(), name='post'),
     path('add', views.NewsAddView.as_view(), name='add'),

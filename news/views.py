@@ -8,6 +8,9 @@ from django.db.models import F
 from .forms import NewsForm
 from .filters import MewsFilter
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
 # Create your views here.
@@ -66,13 +69,21 @@ class NewsDetailView(DetailView):
         return context
 
 
-class NewsAddView(LoginRequiredMixin, CreateView):
+class NewsAddView(PermissionRequiredMixin, CreateView):
+    permission_required = (
+        'news.add_post',
+    )
+
     form_class = NewsForm
     template_name = 'news/add.html'
     success_url = reverse_lazy('news')
 
 
-class NewsEditView(LoginRequiredMixin, UpdateView):
+class NewsEditView(PermissionRequiredMixin, UpdateView):
+    permission_required = (
+        'news.change_post',
+    )
+
     model = Post
     form_class = NewsForm
     template_name = 'news/edit.html'
@@ -96,3 +107,12 @@ class NewsSearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = MewsFilter(self.request.GET, queryset=self.get_queryset())
         return context
+
+
+@login_required
+def become_author(request):
+    user = request.user
+    authors_group = Group.objects.get(name='authors')
+    if not request.user.groups.filter('name=''authors').exists():
+        authors_group.user_set.add(user)
+    return redirect('news')
