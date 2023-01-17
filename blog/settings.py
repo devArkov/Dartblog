@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, 'auth/templates'),
+            os.path.join(BASE_DIR, 'user/templates'),
             os.path.join(BASE_DIR, 'news/templates'),
         ],
         'APP_DIRS': True,
@@ -155,7 +155,6 @@ CACHES = {
 }
 
 # Auth settings
-
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = 'news'
 LOGOUT_URL = 'news'

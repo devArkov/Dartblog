@@ -9,15 +9,7 @@
                     <div class="blog-post-area-style">
                         <div class="col-md-12">
                             <div class="big-image">
-                                <h3>User's profile</h3>
-
-                                <form method="post">
-                                    {% csrf_token %}
-
-                                    {{ form.as_p }}
-
-                                    <button type="submit" class="btn btn-primary btn-block mt-3">Search</button>
-                                </form>
+                                <h3>{{ user.username }}'s profile</h3>
                             </div>
                         </div>
                     </div>
